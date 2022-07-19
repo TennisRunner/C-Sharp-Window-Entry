@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +11,7 @@ namespace botshell
         public IntPtr hwnd;
 
 
-
+     
         public bool isVisible
         {
             get
@@ -37,7 +37,7 @@ namespace botshell
 
                 GetClassName(this.hwnd, builder, builder.Capacity);
 
-                return return builder.ToString();
+                return builder.ToString();
             }
         }
 
@@ -194,6 +194,19 @@ namespace botshell
                     ent = new WindowEntry(temp);
 
                 return ent;
+            }
+        }
+
+        public static WindowEntry foregroundWindow
+        {
+            get
+            {
+                return new WindowEntry(GetForegroundWindow());
+            }
+
+            set
+            {
+                SetForegroundWindow(value.hwnd);
             }
         }
 
